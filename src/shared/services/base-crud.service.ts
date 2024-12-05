@@ -1,4 +1,3 @@
-import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 export abstract class BaseCrudService<T> {
@@ -13,7 +12,7 @@ export abstract class BaseCrudService<T> {
   }
 
   async findOneOrFail(id: number): Promise<T | null> {
-    const entity = this.repository.findOneBy({ id } as any);
+    const entity = await this.repository.findOneBy({ id } as any);
     if(!entity) throw new Error(`The entity with ID ${id} was not found.`);
     return entity;
   }
