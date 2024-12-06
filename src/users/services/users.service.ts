@@ -1,14 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '../entities/user.model';
 import { Repository } from 'typeorm';
-import { BaseCrudService } from 'src/shared/services/base-crud.service';
+import { User } from '../entities/user.model';
+import { UserAccessDto } from '../helpers/user.dto';
 
 @Injectable()
-export class UsersService extends BaseCrudService<User> {
+export class UsersService {
     @InjectRepository(User) protected repository: Repository<User>;
 
-    handleUserAccess = (data: {}) => {
+    handleAccess = async (data: UserAccessDto) => {
+        const {company, name} = data;
+        const existsUser = await this.repository.findOneBy({company, name});
+        if(existsUser) return existsUser;
 
+        return this.repository.create({company, name});
     }
 }
