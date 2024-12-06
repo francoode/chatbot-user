@@ -6,13 +6,14 @@ import { UserAccessDto } from '../helpers/user.dto';
 
 @Injectable()
 export class UsersService {
-    @InjectRepository(User) protected repository: Repository<User>;
+    //@InjectRepository(User) protected repository: Repository<User>;
 
     handleAccess = async (data: UserAccessDto) => {
-        const {company, name} = data;
+        return {'hola': 'mundo'}
+        /* const {company, name} = data;
         const existsUser = await this.repository.findOneBy({company, name});
         if(existsUser) return existsUser;
 
-        return this.repository.create({company, name});
+        return this.repository.create({company, name}); */
     }
 }
