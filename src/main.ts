@@ -11,18 +11,15 @@ async function bootstrap() {
     }),
   );
 
-  app.connectMicroservice<MicroserviceOptions>({
+/*   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.RMQ,
     options: {
       urls: ['amqp://user:password@rabbitmq:5672'],
       queue: 'user_queue',
-      queueOptions: {
-        durable: true,
-      },
     },
   });
 
-  await app.startAllMicroservices();
+  await app.startAllMicroservices(); */
   await app.listen(3000);
 }
 bootstrap();
