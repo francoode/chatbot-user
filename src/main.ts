@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
-import { USER_QUEUE } from '@chatbot/shared-lib';
+
 
 async function bootstrap() {
 	const app = await NestFactory.create(AppModule);
@@ -16,7 +16,7 @@ async function bootstrap() {
 		transport: Transport.RMQ,
 		options: {
 			urls: ['amqp://user:password@rabbitmq:5672'],
-			queue: USER_QUEUE,
+			queue: 'USER_QUEUE',
 		},
 	});
 
