@@ -14,15 +14,4 @@ export class UsersController {
         const data = await this.service.handleAccess(params);
         return res.status(HttpStatus.OK).send(data);
     }
-
-    @MessagePattern('USER_ACCESS_CHAT') 
-    async access(data) {
-        
-        console.log('USER_ACCESS_CHAT usercotrollers...');
-    }
-
-    /* @MessagePattern(CHAT_USER_CHECK_EXISTS)
-    chatExists() {
-        console.log('chat exists');
-    } */
 }
