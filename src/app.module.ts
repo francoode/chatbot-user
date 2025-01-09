@@ -11,7 +11,7 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     UsersModule,
     SharedModule,
-    TypeOrmModule.forRoot({
+    /* TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'db',
       port: Number(3306),
@@ -20,7 +20,7 @@ import { ConfigModule } from '@nestjs/config';
       database: 'chat_bot',
       entities: [User],
       synchronize: true,
-    }),
+    }), */
     ConfigModule.forRoot({ isGlobal: true })
   ],
   controllers: [UsersController],
